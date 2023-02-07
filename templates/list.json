@@ -1,7 +1,7 @@
 {
     "width": "[autoWidth]",
     "height": "[autoHeight]",
-    "x": 170,
+    "x": 165,
 
     "data": [
         {
@@ -34,6 +34,7 @@
                         "data": [{"field": "From Node Type","as": "node_type"},
                                 {"field": "From Node Type", "as": "node_type_color"},
                                 {"field": "From Node (Short Name)","as": "name"},
+                                {"field": "From Node (Full Name)","as": "fullName"},
                                 {"field": "PP","as": "Peace"},
                                 {"field": "date", "as": "node_time"}]},
                                 
@@ -132,15 +133,16 @@
             "layout": "list",
             "mark": {
                 "type": "text",
-                "text": {"field": "data[0].source.data.name"},
+                "text": {"field": "data[0].source.data.fullName"},
                 "x": -10,
                 "dy": 3,
                 "fontSize":12,
-                "lineBreak": ",",
-                "limit": 150,
+
+                "limit": 140,
                 "lineHeight": 10,
                 "fill": "black",
-                "align": "right"
+                "align": "right",
+                "tooltip": {"expression": "{ agreement: datum.data[0].source.data.fullName }"}
             }
         },
         {
@@ -160,7 +162,7 @@
                 "name": "list2",
                 "data": "entry.data",
                 "pattern": "row-by-row",
-                "numCols": 25,
+                "numCols": 20,
                 "order": { "order": "order_by_id"  }
                 }
             ],
@@ -175,7 +177,7 @@
                             "field": "target.data.node_type_color",
                             "scale": "nodeColor"
                         },
-                        "area": 250,
+                        "area": 200,
                         "tooltip": {"expression": "{ Name: datum.target.data.name }"} 
                     }
                 }
