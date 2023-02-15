@@ -20,7 +20,7 @@
             "parts": [
                 {"data": "data",
                     "yieldsLinks": [
-                        {"source_id": {"field": "From Node (Short Name)"},
+                        {"source_id": {"field": "From Node (Full Name)"},
                          "source_node_type": "node",
                          "source_id_field": "id",
                          "target_id": {"field": "To Node Name"},
@@ -30,11 +30,12 @@
                         }
                     ],
                     "yieldsNodes": [
-                        {"id_field": "From Node (Short Name)",
+                        {"id_field": "From Node (Full Name)",
                         "type": "node",
                         "data": [{"field": "From Node Type","as": "node_type"},
                                 {"field": "From Node Type", "as": "node_type_color"},
                                 {"field": "From Node (Short Name)","as": "name"},
+                                {"field": "From Node (Full Name)","as": "fullName"},
                                 {"field": "PP","as": "Peace"},
                                 {"field": "date", "as": "node_time"}]},
                                 
@@ -196,7 +197,7 @@
                     "scale": "nodeColor"
                 },
                 "tooltip": {
-                    "expression": "{Name: datum.data.name, Type: datum.data.node_type_color}"
+                    "expression": "{Name: datum.id, Type: datum.data.name}"
                 }
             }
         },
@@ -205,14 +206,15 @@
             "layout": "syrian-jigsaw",
             "mark": {
                 "type": "text",
-                "text": {"field": "data.name"},
+                "text": {"field": "id"},
                 "fill": "black",
                 "fontSize":12,
                 "lineBreak": ",",
                 "limit": 150,
                 "align": {"expression": "datum.data.node_type_color == 'Peace Agreement' ? 'right' : 'left'"},
                 "dx": {"expression": "datum.data.node_type_color == 'Peace Agreement' ? -15 : 10"},
-                "dy": 2
+                "dy": 2,
+                "tooltip": {"field": "id"}
             }
         }
     ]

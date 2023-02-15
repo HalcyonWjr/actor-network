@@ -45,7 +45,7 @@
             "parts": [
                 {"data": "data",
                     "yieldsLinks": [
-                        {"source_id": {"field": "From Node (Short Name)"},
+                        {"source_id": {"field": "From Node (Full Name)"},
                          "source_node_type": "node",
                          "source_id_field": "id",
                          "target_id": {"field": "To Node Name"},
@@ -55,11 +55,12 @@
                         }
                     ],
                     "yieldsNodes": [
-                        {"id_field": "From Node (Short Name)",
+                        {"id_field": "From Node (Full Name)",
                         "type": "node",
                         "data": [{"field": "From Node Type","as": "node_type"},
                                 {"field": "From Node Type", "as": "node_type_color"},
                                 {"field": "From Node (Short Name)","as": "name"},
+                                {"field": "From Node (Full Name)","as": "fullName"},
                                 {"field": "PP","as": "Peace"},
                                 {"field": "date", "as": "node_time"}]},
                                 
