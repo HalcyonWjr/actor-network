@@ -110,7 +110,6 @@
       {
           "entries": "years",
           "layout": "layout",
-          
           "mark": {
               "type": "rect",
               "fill": { "expression": "datum.data[0].year % 2 == 0 ? 'black' : 'white'"},

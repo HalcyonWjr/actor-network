@@ -1,7 +1,7 @@
 {
     "width": "[autoWidth]",
     "height": "[autoHeight]",
-    "x": 165,
+    "x": 145,
 
     "data": [
         {
@@ -91,32 +91,30 @@
             "name": "nodeColor",
             "type": "ordinal",
             "range": [
-                "#D97144",
-                "#568AA4",
                 "#60A18B",
-                "#335B60",
                 "#EAC05B",
-                "#CDD2CC",
-                "#F3F2D7",
-                "#B16748",
+                "#D97144",
+                "#E8A5D5",
                 "#7FAADC",
-                "#9EB449",
                 "#714FBA",
-                "#E8A5D5"
+                "#9EB449",
+                "#CEAC9D",
+                "#F6F5BF",
+                "#568AA4",
+                "#CDD2CC"
             ],
             "domain": [
-                "Peace Process",
-                "Armed Group",
                 "Peace Agreement",
-                "IGO",
                 "Country/State",
-                "State Coalition",
-                "Region",
-                "Other",
+                "Entity",
+                "IGO",
+                "NGO",
                 "Political Party",
-                "Political Party/Armed Group",
-                "UN Mission",
-                "Entity"
+                "Armed Organization",
+                "Military",
+                "State Coalition",
+                "Umbrella",
+                "Other"
             ]
         },
         {
@@ -137,7 +135,6 @@
                 "x": -10,
                 "dy": 3,
                 "fontSize":12,
-
                 "limit": 140,
                 "lineHeight": 10,
                 "fill": "black",
@@ -162,7 +159,7 @@
                 "name": "list2",
                 "data": "entry.data",
                 "pattern": "row-by-row",
-                "numCols": 20,
+                "numCols": 15,
                 "order": { "order": "order_by_id"  }
                 }
             ],
