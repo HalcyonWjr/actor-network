@@ -1,7 +1,8 @@
 {
     "width": "[autoWidth]",
     "height": "[autoHeight]",
-    "x": 145,
+    "x": 150,
+    "y": -10,
 
     "data": [
         {
@@ -139,7 +140,7 @@
                 "lineHeight": 10,
                 "fill": "black",
                 "align": "right",
-                "tooltip": {"expression": "{ agreement: datum.data[0].source.data.fullName }"}
+                "tooltip": {"expression": "datum.data[0].source.data.fullName"}
             }
         },
         {
@@ -159,7 +160,7 @@
                 "name": "list2",
                 "data": "entry.data",
                 "pattern": "row-by-row",
-                "numCols": 15,
+                "numCols": 16,
                 "order": { "order": "order_by_id"  }
                 }
             ],
@@ -174,8 +175,10 @@
                             "field": "target.data.node_type_color",
                             "scale": "nodeColor"
                         },
-                        "area": 200,
-                        "tooltip": {"expression": "{ Name: datum.target.data.name }"} 
+                        "stroke": "white",
+                        "strokeWidth": 3,
+                        "area": 350,
+                        "tooltip": {"expression": "datum.target.data.name"} 
                     }
                 }
             ]

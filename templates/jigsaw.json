@@ -14,6 +14,31 @@
         }
     ],
 
+    "parameters": [
+        {
+            "name": "selected_node",
+            "action": "replace",
+            "network": "network",
+            "type": "selection",
+            "clearOnBackgroundClick": true
+        },
+        {
+            "name": "outlinks",
+            "source": "selected_node",
+            "network": "network",
+            "transform": [
+            {"type": "connectedEdges"}
+        ]
+        },
+        {
+            "name": "neighbours",
+            "source": "selected_node",
+            "transform": [
+                { "type": "neighbours", "direction": "both" }
+            ]
+            }
+    ],
+
     "networks": [
         {
             "name": "network",
@@ -180,12 +205,40 @@
                 "start": "source",
                 "end": "target",
                 "strokeWidth": {"field":"data.Edge", "scale":"edgeWidth"},
-                "stroke": {"field":"data.Edge", "scale":"edgeColor"}
+                "stroke": {"field":"data.Edge", "scale":"edgeColor"},
+                "opacity": {
+                    "conditions": [
+                        {"inSelection": "outlinks.links","value": 1},
+                        {"selectionIsEmpty": "outlinks.links","value": 1}
+                        ],
+                   "value": 0.5
+                 }
+            }
+        },
+        {
+            "entries": "network.links",
+            "layout": "syrian-jigsaw",
+            "ifInSelection": "outlinks.links",
+            "mark": {
+                "type": "linkpath",
+                "start": "source",
+                "end": "target",
+                "stroke": "#FF7F0E",
+                "strokeWidth": {"field":"data.Edge", "scale":"edgeWidth"}
             }
         },
         {
             "entries": "network.nodes",
             "layout": "syrian-jigsaw",
+            "actions": [
+                {
+                "interaction": "select",
+                "using": "cursor",
+                "event": "click",
+                "action": "replace",
+                "selection": "selected_node"
+                }
+            ],
             "mark": {
                 "type": "symbol",
                 "shape": {"field": "data.node_type", "scale": "shape"},
@@ -195,8 +248,16 @@
                     "scale": "nodeColor"
                 },
                 "tooltip": {
-                    "expression": "{Name: datum.id, Type: datum.data.name}"
-                }
+                    "expression": "datum.data.node_type == 'Peace Agreement' ? {Name: datum.data.fullName, Date: datum.data.node_time} : {Name: datum.id}"
+                },
+                "opacity": {
+                    "conditions": [
+                        {"inSelection": "selected_node.nodes","value": 1},
+                        {"inSelection": "neighbours.nodes","value": 1},
+                        {"selectionIsEmpty": "selected_node.nodes","value": 1}
+                        ],
+                   "value": 0.2
+                 }
             }
         },
         {
@@ -207,7 +268,6 @@
                 "text": {"field": "id"},
                 "fill": "black",
                 "fontSize":12,
-                "lineBreak": ",",
                 "limit": 150,
                 "align": {"expression": "datum.data.node_type_color == 'Peace Agreement' ? 'right' : 'left'"},
                 "dx": {"expression": "datum.data.node_type_color == 'Peace Agreement' ? -15 : 10"},

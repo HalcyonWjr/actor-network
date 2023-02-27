@@ -115,7 +115,7 @@
               "fill": { "expression": "datum.data[0].year % 2 == 0 ? 'black' : 'white'"},
               "opacity": 0.02,
               "width": "[barWidth]",
-              "height": 230
+              "height": "[autoHeight]"
               }
       },
       {
@@ -138,7 +138,7 @@
               "type": "square",
               "area": 150,
               "fill": { "expression": "datum.data.Peace == [peaceProcess] ? '#60A18B' : '#D9D9D9'"},
-              "tooltip": {"expression": "{ Name: datum.data.name, Time: datum.data.node_time}"  }
+              "tooltip": {"expression": "{ Name: datum.data.name, Date: datum.data.node_time}"  }
            }
       }
   ]
